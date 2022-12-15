@@ -4,6 +4,7 @@ import sqlite3
 from Soda import Soda
 from SodaMachine import SodaMachine
 from db import DB
+from flask import Flask, render_template, request, make_response
 
 soda1 = Soda(10, 20, "Дюшес", 20)
 soda2 = Soda(3, 0, "Мохито", 30)
@@ -17,35 +18,59 @@ machine.AddCoin(50)
 
 machine.SelectSoda(0)
 
-
-def test():
-    while True:
-        print("-----------------------------------")
-        print("Water:", machine.water)
-        print("Syrup:", machine.syrup)
-        print("Money:", machine.money)
-        print("coinAcceptor", machine.coinAcceptor)
-        print("progressWater", machine.progressWater)
-        print("progressSyrup", machine.progressSyrup)
-        print("-----------------------------------")
-        time.sleep(1)
-
-def get_db_connection():
-    conn = sqlite3.connect('DB.db')
-    conn.row_factory = sqlite3.Row
-    return conn
-
-def get_post(post_id):
-    conn = get_db_connection()
-    post = conn.execute('SELECT * FROM posts WHERE id = ?',
-                        (post_id,)).fetchone()
-    conn.close()
-    return post
+app = Flask(__name__, template_folder='templates')
 
 
-t_elevator = threading.Thread(target=test)
-t_elevator.start()
+def get_data():
+    data = [
+        machine.water,
+        machine.syrup,
+        machine.money,
+        machine.coinAcceptor,
+        machine.progressWater,
+        machine.progressSyrup,
+        machine.error,
+        machine.result
+    ]
 
-t_elevator1 = threading.Thread(target=machine.Activation)
-t_elevator1.start()
+    return data
 
+
+@app.route("/")
+def main():
+    return render_template('index.html')
+
+
+@app.route('/info', methods=['GET'])
+def getInfo():
+    y = get_post(1)
+    message_server = ""
+
+    for i in range(len(y)):
+        message_server += str(y[i])
+        if i != len(y) - 1:
+            message_server += "/"
+
+    res = make_response(message_server)
+    res.headers['Content-Type'] = 'text'
+    return res
+
+
+@app.route('/button', methods=['POST'])
+def postInfo():
+    button = request.args.get('button')
+    if button == 'Activation':
+        machine.Activation()
+    elif button == "AddCoin":
+        machine.AddCoin(10)
+    elif button == "TakeSoda":
+        machine.TakeSoda()
+    else:
+        machine.SelectSoda(int(button))
+
+    res = make_response()
+    return res
+
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8200, debug=False, use_reloader=False)

@@ -18,6 +18,7 @@ class SodaMachine:
         self.progressWater = 0
         self.progressSyrup = 0
         self.error = ""
+        self.result = ""
 
     def AddNewSoda(self, soda):
         if soda not in self.sodaList:
@@ -32,6 +33,9 @@ class SodaMachine:
         if 0 <= number_soda <= len(self.sodaList) - 1:
             self.selectSoda = self.sodaList[number_soda]
             AddLog("Выбрана " + str(number_soda + 1) + " содавая")
+
+    def TakeSoda(self):
+        self.result = ""
 
     def Activation(self):
         AddLog("Нажали на кнопку выдать содаваю")
@@ -56,6 +60,8 @@ class SodaMachine:
         self.coinAcceptor -= self.selectSoda.price
         self.money += self.selectSoda.price
         AddLog("Содавая выдана")
+
+        self.result = self.selectSoda.name
         return self.selectSoda
 
     def MakeSoda(self, Soda):
