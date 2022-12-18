@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+
+ <div class="row">
+
+    <div class="contrainer m-5">
+
+        <button type="button" onclick=buttonClick(1) class="btn btn-outline-danger">Кока-</button>
+
+        <br />
+        <button type="button" onclick=buttonClick(2) class="btn btn-outline-success"> Махито  </button>
+        <br />
+        <button type="button" onclick=buttonClick(2) class="btn btn-outline-warning"> Дюшес  </button>
+
+
+
+        <div cclass="contrainer m-5">
+                 <br />
+            <button type="button" onclick=buttonClick(2) class="btn btn-outline-warning"> 15 $   </button>
+            <button type="button" onclick=buttonClick(2) class="btn btn-outline-success"> 10 $  </button>
+            <button type="button" onclick=buttonClick(1) class="btn btn-outline-danger">5 $ </button>
+       </div>
+    </div>
+
+    </div>
+    <div class="contrainer m-5">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 7%"></div>
+        </div>
+    </div>
+
+ <div class="row">
+    <div class="col" style="max-width: 20rem">
+
+            <h3 class="d-flex justify-content-center">progressWater:</h3>
+            <h4 id= speed class="d-flex justify-content-center">0 %</h4>
+            <h3 class="d-flex justify-content-center">progressSyrup:</h3>
+            <h4 id= speed class="d-flex justify-content-center">0 %</h4>
+        </div>
+
+      <div class="col" style="max-width: 10rem">
+        <h3 >Water:</h3>
+        <h4 id= floor c>Cola</h4>
+        <h3 >Syrup:</h3>
+        <h4 id= floor >Cola</h4>
+      </div>
+
+      <div class="col" style="max-width: 10rem">
+        <h3 >Money:</h3>
+        <h4 id= door >20$</h4>
+        <h3 >coinAcceptor:</h3>
+        <h4 id= door >20$</h4>
+      </div>
+ </div>
+
+
+
+
