@@ -9,6 +9,8 @@ def AddLog(message):
 
 class SodaMachine:
     def __init__(self, water, syrup):
+        self.progressWaterUI = 0
+        self.progressSyrupUI = 0
         self.selectSoda = None
         self.water = water
         self.syrup = syrup
@@ -17,8 +19,8 @@ class SodaMachine:
         self.coinAcceptor = 0
         self.progressWater = 0
         self.progressSyrup = 0
-        self.error = ""
-        self.result = ""
+        self.error = "-"
+        self.result = "-"
 
     def AddNewSoda(self, soda):
         if soda not in self.sodaList:
@@ -35,7 +37,10 @@ class SodaMachine:
             AddLog("Выбрана " + str(number_soda + 1) + " содавая")
 
     def TakeSoda(self):
-        self.result = ""
+        self.result = "-"
+        self.error = "-"
+        self.progressWaterUI = "-"
+        self.progressSyrupUI = "-"
 
     def Activation(self):
         AddLog("Нажали на кнопку выдать содаваю")
@@ -67,22 +72,31 @@ class SodaMachine:
     def MakeSoda(self, Soda):
         self.progressSyrup = 0
         self.progressWater = 0
+        self.progressWaterUI = 0
+        self.progressSyrupUI = 0
 
         while True:
-            if self.progressWater == Soda.water:
+            if self.progressWater >= Soda.water:
                 break
 
-            self.progressWater += 2
-            self.water -= 2
+            self.progressWater += 1
+            self.water -= 1
+
+            self.progressWaterUI = round((self.progressWater  / Soda.water) * 100, 2)
 
             time.sleep(0.5)
 
         while True:
-            if self.progressSyrup == Soda.syrup:
+            if self.progressSyrup >= Soda.syrup:
                 break
 
             self.progressSyrup += 1
             self.syrup -= 1
+
+            if Soda.syrup == 0:
+                self.progressSyrupUI = "-"
+            else:
+                self.progressSyrupUI = round((self.progressSyrup / Soda.syrup) * 100, 2)
 
             time.sleep(0.5)
 

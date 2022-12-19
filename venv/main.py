@@ -6,17 +6,17 @@ from SodaMachine import SodaMachine
 from db import DB
 from flask import Flask, render_template, request, make_response
 
-soda1 = Soda(10, 20, "Дюшес", 20)
-soda2 = Soda(3, 0, "Мохито", 30)
+
+soda1 = Soda(10, 20, "Кола", 20)
+soda2 = Soda(5, 2, "Махито", 30)
+soda3 = Soda(8, 6, "Дюшес", 10)
 
 machine = SodaMachine(300, 300)
 
 machine.AddNewSoda(soda1)
 machine.AddNewSoda(soda2)
+machine.AddNewSoda(soda3)
 
-machine.AddCoin(50)
-
-machine.SelectSoda(0)
 
 app = Flask(__name__, template_folder='templates')
 
@@ -27,8 +27,8 @@ def get_data():
         machine.syrup,
         machine.money,
         machine.coinAcceptor,
-        machine.progressWater,
-        machine.progressSyrup,
+        machine.progressWaterUI,
+        machine.progressSyrupUI,
         machine.error,
         machine.result
     ]
@@ -43,7 +43,7 @@ def main():
 
 @app.route('/info', methods=['GET'])
 def getInfo():
-    y = get_post(1)
+    y = get_data()
     message_server = ""
 
     for i in range(len(y)):

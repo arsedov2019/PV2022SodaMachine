@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="row">
+
+    <div class="contrainer m-5">
+
+        <button type="button" onclick=buttonClick(0) class="btn btn-outline-danger">Кола 20$</button>
+
+        <br />
+        <button type="button" onclick=buttonClick(1) class="btn btn-outline-success"> Махито 30$ </button>
+        <br />
+        <button type="button" onclick=buttonClick(2) class="btn btn-outline-warning"> Дюшес 10$ </button>
+
+
+
+        <div class="contrainer m-5">
+                 <br />
+            <button type="button" onclick=buttonClick("AddCoin") class="btn btn-outline-success"> 10 $  </button>
+            <button type="button" onclick=buttonClick("Activation") class="btn btn-outline-success"> Activation  </button>
+            <button type="button" onclick=buttonClick("TakeSoda") class="btn btn-outline-success"> Take Soda  </button>
+       </div>
+    </div>
+
+
+
+ <div class="row">
+    <div class="col" style="max-width: 20rem">
+
+            <h3 class="d-flex justify-content-center">progressWater:</h3>
+            <h4 id=prWater class="d-flex justify-content-center">0 %</h4>
+            <h3 class="d-flex justify-content-center">progressSyrup:</h3>
+            <h4 id=prSyrup class="d-flex justify-content-center">0 %</h4>
+        </div>
+
+      <div class="col" style="max-width: 10rem">
+        <h3 >Water:</h3>
+        <h4 id=water>Cola</h4>
+        <h3 >Syrup:</h3>
+        <h4 id=syrup>Cola</h4>
+      </div>
+
+      <div class="col" style="max-width: 10rem">
+        <h3 >Money:</h3>
+        <h4 id=money>20$</h4>
+        <h3 >coin:</h3>
+        <h4 id=coin>20$</h4>
+      </div>
+     <div class="col" style="max-width: 10rem">
+        <h3 >Result:</h3>
+        <h4 id=result>-</h4>
+        <h3 >Error:</h3>
+        <h4 id=error>-</h4>
+      </div>
+ </div>
+
+      <script>
+      var prWater = document.getElementById("prWater");
+      var prSyrup = document.getElementById("prSyrup");
+      var water = document.getElementById("water");
+      var syrup = document.getElementById("syrup");
+      var money = document.getElementById("money");
+      var coin = document.getElementById("coin");
+      var result = document.getElementById("result");
+      var error = document.getElementById("error");
+      setInterval(getInfo, 100);
+
+      function getInfo() {
+        var x = new XMLHttpRequest();
+        x.open("GET", '/info');
+        x.send()
+        x.onload = function (){
+            var data = x.response.split('/');
+            prWater.textContent = data[4] + " %";
+            prSyrup.textContent = data[5] + " %";
+            water.textContent = data[0];
+            syrup.textContent = data[1];
+            result.textContent = data[7];
+            error.textContent = data[6];
+            money.textContent = data[2] + "$";
+            coin.textContent = data[3] + "$";
+        }
+      }
+      </script>
+      <script>
+    function buttonClick(button){
+        var x = new XMLHttpRequest();
+        x.open("POST", '/button' + '?button='+button);
+        x.send()
+    }
+      </script>
+{% endblock %}

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d4de2bf-0ecf-449b-9b9a-9dd6abadee31" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/DB.db" beforeDir="false" afterPath="$PROJECT_DIR$/venv/DB.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/DB.db-journal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/SodaMachine.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/SodaMachine.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/main.py" afterDir="false" />
     </list>
@@ -51,7 +52,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="D:\Python\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\korya\AppData\Local\Programs\Python\Python310\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -74,7 +75,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3a4a03fa-b551-4cd6-b364-476afaacae36" name="Changes" comment="" />
+      <changelist id="3d4de2bf-0ecf-449b-9b9a-9dd6abadee31" name="Changes" comment="" />
       <created>1671129609830</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
